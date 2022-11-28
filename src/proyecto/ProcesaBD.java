@@ -7,6 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+/*
+ * Clase que extrae todos los datos de la base de datos MariaDB y los alamcena
+ * 
+ * en el ArrayList desgloseMes para manipularlos posteriormente con el otro ArrayList
+ */
 public class ProcesaBD {
 
 	
@@ -29,33 +35,10 @@ public class ProcesaBD {
 	 		emp.add(e);
 	 	}
 	 	
-	 	
+	 	conn.close();
+	 	sent.close();
+	 	rs.close();
 		
 		return emp;
 	}
-	/*
-	public ArrayList<Empleados> procesaVentas(ArrayList<Empleados> emp) throws SQLException{
-		ArrayList<Empleados> emp2 = new ArrayList<Empleados>();
-		
-		Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306/db1eva","root","nacho");
-	 	Statement sent = conn.createStatement();
-	 	
-	 	String query = "SELECT * FROM rrhhventas";
-	 	ResultSet rs = sent.executeQuery(query);
-	 	
-	 	while(rs.next()) {
-	 		double ventasT = 0;
-	 		for (int i = 0; i < emp.size(); i++) {
-	 			if (emp.get(i).getMatricula().equalsIgnoreCase(rs.getString(1)) && 
-	 					emp.get(i).getDepartamento().equalsIgnoreCase(rs.getString(i))) {
-	 				ventasT += emp.get(i).getVentasSem();
-	 			}
-	 		}
-	 	}
-	 	
-	 	
-		
-		return emp2;
-	}
-	*/
 }

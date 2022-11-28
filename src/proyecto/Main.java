@@ -28,14 +28,21 @@ public class Main {
 		ProcesaFich pf = new ProcesaFich();
 		ProcesaBD pb = new ProcesaBD();
 		
+		//Ruta local del fichero binario en mi PC (cambiar en tu caso)
 		String rutaFicherdat = "E:" + File.separator + "Documentos" 
 				+ File.separator + "DAM" + File.separator + "Segundo Curso" 
 				+ File.separator + "Acceso a Datos" + File.separator + "trabajoAcceso"
-				+ File.separator + "01102022.dat"; //Ruta local del fichero binario en mi PC
+				+ File.separator + "01102022.dat"; 
 		
+		
+		//ArrayList que contiene todos los datos del fichero CSV
 		totalMes = pf.procesaFichero(rutaFicherdat);
+		
+		//ArrayList que contiene todos los datos de la base de datos de MariaDB
 		desgloseMes = pb.procesaDatos();
 		
+		
+		//Pregunta por pantalla la fecha para generar archivo
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce fecha para generar registro(yyyy-MM-dd): ");
 		String fecha = sc.nextLine();
@@ -50,6 +57,8 @@ public class Main {
 			System.out.println(totalMes.get(i));
 		}
 		
+		
+		//Configuración del reverse 
 		Configuration config = new Configuration();
 		config.configure();
 		SessionFactory session = config.buildSessionFactory();
@@ -76,6 +85,10 @@ public class Main {
 		session.close();
 	}
 	
+	
+	//Método privado que halla el total de ventas mensuales y las almacena en el ArrayList 
+	//totalMes que es el ArrayList que contiene todos los datos finales que se importarán
+	//a la base de datos de MySQL
 	private static void actualizaDatos(ArrayList<Empleados> totalMes, ArrayList<Empleados> desgloseMes) {
 		DecimalFormat df = new DecimalFormat("#.00");
 		
@@ -92,6 +105,9 @@ public class Main {
 		}
 	}
 	
+	
+	//Método privado que transforma la fecha que introduces por pantalla al formato Date de java
+	//para posteriormente poder introducirla a la base de datos de MySQL
 	private static void introduceFecha(ArrayList<Empleados> totalMes, String fecha) {
 		for (int i = 0; i < totalMes.size(); i++) {
 			totalMes.get(i).setSemana(java.sql.Date.valueOf(fecha));

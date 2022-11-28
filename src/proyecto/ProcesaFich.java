@@ -9,15 +9,26 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+/*
+ * Clase que procesa fichero CSV y lo mete en el ArrayList "totalMes" donde 
+ * 
+ * se meterán al final todos los registros de ventas totales para introducir ala base
+ * 
+ * datos de MySQL
+ * 
+ */
+
 public class ProcesaFich {
 	
 	private DecimalFormat df = new DecimalFormat("#.00");
 	
+	//Constructor base
 	public ProcesaFich () {
 		
 	}
 	
-	
+	//Método que devuelve un ArrayList con los datos del fichero CSV cuya ruta se pasa
+	//por parámetro 
 	public ArrayList<Empleados> procesaFichero(String ruta) throws IOException{
 		
 		ArrayList<Empleados> emp = new ArrayList<Empleados>();
@@ -37,9 +48,11 @@ public class ProcesaFich {
 			
 		}
 		
+		fis.close();
+		dis.close();
+		
 		return emp;
 	}
-	
 	
 
 }
