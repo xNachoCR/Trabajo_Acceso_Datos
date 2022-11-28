@@ -34,6 +34,7 @@ public class ProcesaFich {
 			double gastoTotal = Double.parseDouble(df.format(aux));
 			Empleados e = new Empleados(matricula, salarioMen, gastoTotal);
 			emp.add(e);
+			
 		}
 		
 		return emp;

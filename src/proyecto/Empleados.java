@@ -19,13 +19,20 @@ public class Empleados {
 		this.gastos = gasto;
 	}
 	
-	public Empleados(String matricula, String dpto, String nombre, double gastos, double ventas, Date semana) {
+	
+	public Empleados(String matricula, String nombre, String dpto, double ventas, Date semana) {
 		this.matricula = matricula;
 		this.departamento = dpto;
 		this.nombre = nombre;
-		this.gastos = gastos;
 		this.ventasSem = ventas;
 		this.semana = semana;
+	}
+	
+	public Empleados(String matricula, String nombre, String dpto, double ventasT) {
+		this.matricula = matricula;
+		this.nombre = nombre;
+		this.departamento = dpto;
+		this.ventasSem = ventasT;
 	}
 
 	public String getMatricula() {
@@ -100,7 +107,7 @@ public class Empleados {
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "Empleado [MATRICULA=" + matricula + ", APELLIDOS, NOMBRE=" + nombre + ", DEPARTAMENTO=" + departamento
-				+ ", VENTAS=" + ventasSem + ", SALARIO=" + salario + ", GASTOS=" + gastos + ", MES= "+ semana +"]";
+				+ ", VENTAS=" + ventasSem + ", SALARIO=" + salario + ", GASTOS TOTALES=" + gastos + ", MES= "+ semana +"]";
 	}
 	
 	
